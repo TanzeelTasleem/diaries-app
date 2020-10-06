@@ -1,10 +1,10 @@
 import React from 'react'
+import { DiaryList } from '../diary/diary'
 
  const Home = () => {
     return (
         <div>
-            hello from home 
-            enoiewfewufnhewiofn
+            <DiaryList/>
         </div>
     )
 }

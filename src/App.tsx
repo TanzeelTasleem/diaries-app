@@ -19,7 +19,7 @@ const App = () => {
           path="/"
           component={Home}
           isAuthenticated={isAuthenticate}
-        ></PrivateRoute>
+        />
         <PublicRoute
           path="/login"
           component={Login}
