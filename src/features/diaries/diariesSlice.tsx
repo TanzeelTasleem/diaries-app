@@ -3,6 +3,10 @@ import { RootState } from "../../app/rootReducer";
 import { Diary } from "../../interfaces/diary.interface";
 import http from "../../services/api";
 
+interface diaryPayload {
+  diary: Diary;
+}
+
 export const createDiary: any = createAsyncThunk(
   "/create/dairy",
   async (data: Diary) => {
@@ -35,16 +39,17 @@ export const diarySlice = createSlice({
     },
   },
   extraReducers: {
-    [createDiary.fulfilled]: (state, { payload }: PayloadAction<any>) => {
-      const { user, diary } = payload;
+    [createDiary.fulfilled]: (
+      state,
+      { payload }: PayloadAction<diaryPayload>
+    ) => {
+      const { diary } = payload;
       state.push(diary);
     },
-    [createDiary.pending]: (state, { payload }: PayloadAction<any>) => {
-      state = state;
-    },
+    [createDiary.pending]: (state) => state,
   },
 });
 
 export const { addDairy, updateDiary } = diarySlice.actions;
 export default diarySlice.reducer;
-export const GET_DIARY =(state:RootState)=> state.diary
+export const GET_DIARY = (state: RootState) => state.diary;

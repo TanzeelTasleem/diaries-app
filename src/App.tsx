@@ -1,11 +1,12 @@
-import React, { Component, Suspense, useState } from "react";
+import React from "react";
 import "./App.css";
-import { useDispatch, useSelector } from "react-redux";
-import { GET_AUTH, loginAuth } from "./features/authSlice/authSlice";
+import { useSelector } from "react-redux";
+import { GET_AUTH } from "./features/authSlice/authSlice";
 import { Login } from "./components/login/login";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Navigate } from "react-router-dom";
 import { SignUp } from "./components/signUp/signup";
 import Home from "./components/Home/home";
+import { Entry } from "./components/entry/entry";
 
 const App = () => {
   const auth = useSelector(GET_AUTH);
@@ -18,6 +19,11 @@ const App = () => {
         <PrivateRoute
           path="/"
           component={Home}
+          isAuthenticated={isAuthenticate}
+        />
+        <PrivateRoute
+          path = "/:id/entry"
+          component ={Entry}
           isAuthenticated={isAuthenticate}
         />
         <PublicRoute

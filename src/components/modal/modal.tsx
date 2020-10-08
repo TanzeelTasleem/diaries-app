@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Box, Button, TextField } from "@material-ui/core";
-import { handleErrors } from "../../services/mirage/server";
-import { useDispatch, useSelector } from "react-redux";
-import { GET_AUTH } from "../../features/authSlice/authSlice";
-import { createDiary } from "../../features/diaries/diariesSlice";
+// import { handleErrors } from "../../services/mirage/server";
+// import { useDispatch, useSelector } from "react-redux";
+// import { GET_AUTH } from "../../features/authSlice/authSlice";
+// import { createDiary } from "../../features/diaries/diariesSlice";
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -56,32 +56,20 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 interface Props {
     open: boolean;
-    handleClose: () => void
+    handleClose: () => void;
+    handleSubmit : (subject : string , body : string) => void 
 }
-export const DairyModal: React.FC<Props> = ({ open, handleClose }) => {
+export const DairyModal: React.FC<Props> = ({ open, handleClose , handleSubmit}) => {
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
     const [subject, setSubject] = useState<string>('')
     const [body, setBody] = useState<string>('')
-    const dispatch = useDispatch()
-    const { user } = useSelector(GET_AUTH)
-    const rootRef = React.useRef<HTMLDivElement>(null);
-    const handleSubmit = () => {
-        if (subject === "" || body === "") {
-            handleErrors(null, "one of the feilds are empty")
-        }
-        else {
-            dispatch(createDiary({
-                subject: subject,
-                title: body,
-                // userId : userId ,
-                type: "private",
-                userId: user?.id
-            }))
-            handleClose()
-            setSubject("")
-            setBody('')
-        }
+    // const rootRef = React.useRef<HTMLDivElement>(null);
+    
+    const handleClick=()=>{
+        handleSubmit(subject,body)
+        setBody('')
+        setSubject('')
     }
     return (
         <Box>
@@ -120,7 +108,7 @@ export const DairyModal: React.FC<Props> = ({ open, handleClose }) => {
                         value={body}
                         onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => { setBody(e.target.value) }}
                     />
-                    <Button variant="contained" color="primary" onClick={handleSubmit}>Create Diary</Button>
+                    <Button variant="contained" color="primary" onClick={handleClick}>Create Diary</Button>
                 </div>
             </Modal>
         </Box>
