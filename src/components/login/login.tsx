@@ -54,6 +54,7 @@ export function Login() {
 
   return (
     <Container component="main" maxWidth="xs">
+      {alert("login credentials is test 12345")}
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
