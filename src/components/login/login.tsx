@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -37,7 +37,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function Login() {
+export const Login=()=> {
+
+  useEffect(() => {
+     alert("login credentials is test 12345")
+  }, [])
   const classes = useStyles();
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -54,7 +58,6 @@ export function Login() {
 
   return (
     <Container component="main" maxWidth="xs">
-      {alert("login credentials is test 12345")}
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
