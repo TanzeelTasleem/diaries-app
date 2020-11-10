@@ -108,9 +108,9 @@ export const Login=()=> {
           </Button>
           <Grid container>
             <Grid item>
-              <Link href="/signUp" variant="body2">
+              <a href="/signUp">
                 {"Don't have an account? Sign Up"}
-              </Link>
+              </a>
             </Grid>
           </Grid>
         </form>

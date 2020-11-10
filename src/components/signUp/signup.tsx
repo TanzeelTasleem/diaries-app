@@ -117,9 +117,9 @@ export function SignUp() {
           </Button>
           <Grid container>
             <Grid item>
-              <Link href="/login" variant="body2">
+              <a href="/login">
                 {"Already have an account? Login"}
-              </Link>
+              </a>
             </Grid>
           </Grid>
         </form>
