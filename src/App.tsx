@@ -3,10 +3,12 @@ import "./App.css";
 import { useSelector } from "react-redux";
 import { GET_AUTH } from "./features/authSlice/authSlice";
 import { Login } from "./components/login/login";
-import { Routes, Navigate } from "react-router-dom";
+import { Routes } from "react-router-dom";
 import { SignUp } from "./components/signUp/signup";
 import Home from "./components/Home/home";
 import { Entry } from "./components/entry/entry";
+import { PublicRoute } from "./components/routes/publicRoute";
+import { PrivateRoute } from "./components/routes/privateRoute";
 
 const App = () => {
   const auth = useSelector(GET_AUTH);
@@ -41,11 +43,4 @@ const App = () => {
   );
 };
 
-export default App;
-
-const PrivateRoute: React.FC<any> = ({
-  component: Component,
-  isAuthenticated,
-  ...rest
-}) => (isAuthenticated ? <Component {...rest} /> : <Navigate to="/login" />);
-
+export default App
