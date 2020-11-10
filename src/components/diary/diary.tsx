@@ -106,10 +106,10 @@ export const DiaryList = () => {
                     }}
                     anchor="left"
                 >
-                    <Button variant="contained" color="primary" className={classes.btn} onClick={()=>{setOpen(!open)}}>create new</Button>
+                    <Button variant="contained" color="primary" className={classes.btn} onClick={()=>{setOpen(open)}}>create new</Button>
                     {diaries.length > 0 &&
                         (diaries.map((diary: Diary) => {
-                            return (
+                            return ( 
                                 <Box display="flex" flexDirection="column" boxShadow={5} mt={2} borderRadius="15px" >
                                     <Box p={3}>
                                         <Typography variant="h5" className={classes.title}>{diary.subject}</Typography>

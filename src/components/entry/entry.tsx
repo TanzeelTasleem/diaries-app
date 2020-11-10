@@ -76,17 +76,6 @@ const date =(date : any )=>{
             )
         }
         </Box>
-
-        {/* <Box display="flex" justifyContent="space-around" flexWrap="wrap">
-            <Box boxShadow={5} p={3} display="flex" flexDirection="column" width="500px" borderRadius={10}>
-                 <Typography className={classes.title} variant="h5">Subject</Typography>
-                 <Typography variant="subtitle1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi, blanditiis.</Typography>
-                 <Box mt={1} display="flex" justifyContent="space-between">
-                     <Typography variant="subtitle2">Created at: {}</Typography>
-                     <Typography variant="subtitle2">Updated at:{}</Typography>
-                 </Box>
-            </Box>
-        </Box> */}
       </Box>
     </div>
   );

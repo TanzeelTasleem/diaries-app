@@ -26,9 +26,9 @@ export const create = (
     });
     return {
       user: {
-        ...exUser.attrs,
-      },
-      diary: diary.attrs,
+         ...exUser.attrs,
+        },
+        diary: diary.attrs,
     };
   } catch (error) {
     return handleErrors(error, "Failed to create Diary.");

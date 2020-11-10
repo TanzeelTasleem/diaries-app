@@ -20,6 +20,21 @@ export const createDiary: any = createAsyncThunk(
   }
 );
 
+export const UpdateDiary : any = createAsyncThunk(
+  "/update/dairy",
+  async (data: Diary) => {
+    const response = await http.put("/diaries/:id", {
+      id : data.id,
+      subject: data.subject,
+      title: data.title,
+      type: data.type,
+      userId: data?.userId || null,
+    });
+    return response;
+  }
+);
+
+
 export const diarySlice = createSlice({
   name: "diary",
   initialState: [] as Diary[],
@@ -47,6 +62,14 @@ export const diarySlice = createSlice({
       state.push(diary);
     },
     [createDiary.pending]: (state) => state,
+    [UpdateDiary.fulfilled]:(state, {payload} : PayloadAction<Diary>)=>{
+      const { id } = payload;
+      const diaryIndex = state.findIndex((diary) => diary.id === id);
+      if (diaryIndex !== -1) {
+        state.splice(diaryIndex, 1, payload);
+      }
+    },
+    [UpdateDiary.pending]:(state)=> state
   },
 });
 

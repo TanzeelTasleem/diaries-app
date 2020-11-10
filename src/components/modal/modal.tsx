@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Box, Button, TextField } from "@material-ui/core";
-// import { handleErrors } from "../../services/mirage/server";
-// import { useDispatch, useSelector } from "react-redux";
-// import { GET_AUTH } from "../../features/authSlice/authSlice";
-// import { createDiary } from "../../features/diaries/diariesSlice";
-
 function rand() {
     return Math.round(Math.random() * 20) - 10;
 }
@@ -29,8 +24,6 @@ const useStyles = makeStyles((theme: Theme) =>
             flexGrow: 1,
             minWidth: 300,
             transform: "translateZ(0)",
-            // The position fixed scoping doesn't work in IE 11.
-            // Disable this demo to preserve the others.
             "@media all and (-ms-high-contrast: none)": {
                 display: "none",
             },
@@ -64,7 +57,6 @@ export const DairyModal: React.FC<Props> = ({ open, handleClose , handleSubmit})
     const [modalStyle] = React.useState(getModalStyle);
     const [subject, setSubject] = useState<string>('')
     const [body, setBody] = useState<string>('')
-    // const rootRef = React.useRef<HTMLDivElement>(null);
     
     const handleClick=()=>{
         handleSubmit(subject,body)

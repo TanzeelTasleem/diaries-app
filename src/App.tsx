@@ -52,5 +52,6 @@ const PrivateRoute: React.FC<any> = ({
 export const PublicRoute = ({
   component: Component,
   isAuthenticated,
+  path,
   ...rest
-}: any) => (isAuthenticated ? <Navigate to="/" /> : <Component {...rest} />);
+}: any) => (isAuthenticated ? <Navigate to={`${path}`} /> : <Component {...rest} />);

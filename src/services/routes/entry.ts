@@ -19,7 +19,6 @@ export const addEntry = (schema: any, req: Request): { diary: Diary, entry: Entr
       ...diary.attrs,
       updatedAt: now,
     });
-    console.log(entry.attrs)
     return {
       diary: diary.attrs,
       entry: {
