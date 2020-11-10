@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useDispatch } from 'react-redux';
 import { loginAuth } from '../../features/authSlice/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -47,6 +48,7 @@ export const Login=()=> {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const handleSubmit = (e: any) => {
         e.preventDefault();
         dispatch(loginAuth({
@@ -93,10 +95,7 @@ export const Login=()=> {
             value={password}
             onChange = {(e : React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>)=>{setPassword(e.target.value)}}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+          
           <Button
             type="submit"
             fullWidth
@@ -108,9 +107,13 @@ export const Login=()=> {
           </Button>
           <Grid container>
             <Grid item>
-              <a href="/signUp">
+            <Link
+                component="button"
+                variant="body2"
+                onClick={()=>{navigate('/signUp')}}
+              >
                 {"Don't have an account? Sign Up"}
-              </a>
+              </Link>
             </Grid>
           </Grid>
         </form>
