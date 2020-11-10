@@ -4,10 +4,7 @@ import { Diary } from "../../interfaces/diary.interface";
 import { User } from "../../interfaces/user.interface";
 import { handleErrors } from "../mirage/server";
 
-export const create = (
-  schema: any,
-  req: Request
-): { user: User; diary: Diary } | Response => {
+export const create = (schema: any,req: Request): { user: User; diary: Diary } | Response => {
   try {
     const { subject, title, type, userId } = JSON.parse(
       req.requestBody
@@ -36,16 +33,16 @@ export const create = (
 };
 export const updateDiary = (schema: any, req: Request): Diary | Response => {
   try {
-    const diary = schema.diary.find(req.params.id);
+    const diary = schema.diaries.find(req.params.id);
     const data = JSON.parse(req.requestBody) as Partial<Diary>;
     const now = dayjs().format();
     diary.update({
       ...data,
-      updateAt: now,
+      updatedAt: now,
     });
     return diary.attrs as Diary;
   } catch (error) {
-    return handleErrors(error, "error in updating diary");
+    return handleErrors(error, 'Failed to update Diary.');
   }
 };
 export const getDiaries = (schema: any, req: Request): Diary[] | Response => {

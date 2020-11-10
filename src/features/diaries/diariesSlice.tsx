@@ -22,8 +22,8 @@ export const createDiary: any = createAsyncThunk(
 
 export const UpdateDiary : any = createAsyncThunk(
   "/update/dairy",
-  async (data: Diary) => {
-    const response = await http.put("/diaries/:id", {
+  async (data: any) => {
+    const response = await http.put(`/diaries/${data.id}`, {
       id : data.id,
       subject: data.subject,
       title: data.title,
@@ -62,9 +62,9 @@ export const diarySlice = createSlice({
       state.push(diary);
     },
     [createDiary.pending]: (state) => state,
+
     [UpdateDiary.fulfilled]:(state, {payload} : PayloadAction<Diary>)=>{
-      const { id } = payload;
-      const diaryIndex = state.findIndex((diary) => diary.id === id);
+      const diaryIndex = state.findIndex((diary) => diary.id === payload.id);
       if (diaryIndex !== -1) {
         state.splice(diaryIndex, 1, payload);
       }

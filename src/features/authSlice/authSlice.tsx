@@ -60,8 +60,9 @@ export const AuthSlice = createSlice({
         state.token = action.payload;
       }
     },
-    clearToken: (state, { payload }: PayloadAction<any>) => {
+    clearToken: (state) => {
       state.token = null;
+      state.isAuthenticate = false
     },
     setAuthenticate: (state, action) => {
       state.isAuthenticate = true;
