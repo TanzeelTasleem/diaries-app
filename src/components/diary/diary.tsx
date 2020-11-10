@@ -106,7 +106,7 @@ export const DiaryList = () => {
                     }}
                     anchor="left"
                 >
-                    <Button variant="contained" color="primary" className={classes.btn} onClick={()=>{setOpen(open)}}>create new</Button>
+                    <Button variant="contained" color="primary" className={classes.btn} onClick={()=>{setOpen(!open)}}>create new</Button>
                     {diaries.length > 0 &&
                         (diaries.map((diary: Diary) => {
                             return ( 
@@ -116,7 +116,6 @@ export const DiaryList = () => {
                                         <p>1 saved entries</p>
                                         <Box display="flex" justifyContent="space-between">
                                             <Button variant="contained" color="primary" className={classes.btn} onClick={() => { navigate(`/${diary.id}/entry`) }}>add new entry</Button>
-                                            <Button variant="contained" color="primary" className={classes.btn}>veiw All </Button>
                                         </Box>
                                     </Box>
                                 </Box>
